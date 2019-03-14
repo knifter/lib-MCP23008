@@ -26,8 +26,8 @@
 #define REG_DEFVAL			0x03			// IO7..0 Default value, pinstate != defval => interrupt
 #define REG_INTCON			0x04			// IO7..0 Inter. Control: 1 = DefVal reg, 0 = On-change
 #define REG_IOCON			0x05			// Configuration Register
-	#define IOCON_SEQOP		0x02			// Sequential I2C operation enabled (inc addr. ptr)
-	#define IOCON_DISSLW	0x01			// Slew Rate control on SDA pin
+	#define IOCON_SEQOP		0x02			// Sequential I2C operation disabled (inc addr. ptr)
+	#define IOCON_DISSLW	0x01			// Slew Rate control disabled on SDA pin
 	#define IOCON_HAEN		0x08			// Hardware Address enable (MCP23S08 only)
 	#define IOCON_ODR		0x04 			// INT pin Open-Drain Output enable
 	#define IOCON_INTPOL	0x02			// INT pin polarity
@@ -54,6 +54,12 @@ void MCP23008::configIntPin(bool open_drain, bool invert)
 	writereg8(REG_IOCON, (open_drain ? IOCON_ODR : 0) | (invert ? IOCON_INTPOL : 0));
 };
 
+/**
+ * @brief Sets the pinmode per pin
+ * 
+ * POR = 1111 1111
+ * When the bit is clear, the corresponding pin becomes an output.
+ */
 void MCP23008::setPinMode(const uint8_t pin, const PinMode_t mode)
 {
 	if(pin > 7)

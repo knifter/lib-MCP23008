@@ -4,7 +4,7 @@
 #include <Arduino.h>
 #include <TwoWireDevice.h>
 
-#define MCP23008_ADDRESS_DEFAULT              (0x00)
+#define MCP23008_ADDRESS_DEFAULT              (0x20)
 
 class MCP23008: public TwoWireDevice {
     public:    
