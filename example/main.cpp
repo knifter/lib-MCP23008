@@ -29,13 +29,13 @@ void setup()
 
 	mcp.setPinMode(0, 	MCP23008::PINMODE_INPUT); 	// PWR_OK
 	mcp.setPinMode(1, 	MCP23008::PINMODE_OUTPUT);	// 5V_USB_ENABLE
-	mcp.setPinMode(2, 	MCP23008::PINMODE_INPUT);		// PWR_DLY_CHK
+	mcp.setPinMode(2, 	MCP23008::PINMODE_INPUT);	// PWR_DLY_CHK
 	mcp.setPinMode(3, 	MCP23008::PINMODE_OUTPUT);	// PWR_ENBL
 	mcp.setPinMode(4, 	MCP23008::PINMODE_OUTPUT);	// 3V3A_ENBL
 	mcp.setPinMode(5, 	MCP23008::PINMODE_OUTPUT);	// 3V3B_ENBL
 
 	mcp.setPin(1, HIGH);
-	mcp.setPin(3), HIGH);
+	mcp.setPin(3, HIGH);
 	mcp.setPin(4, HIGH);
 	mcp.setPin(5, LOW);
 }
